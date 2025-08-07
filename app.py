@@ -43,7 +43,7 @@ def instructions_page():
     st.markdown("Welcome! Follow these instructions to set up and use the chatbot.")
 
     st.markdown("""
-## 🤖 Welcome to the AI Financial Chatbot!
+## Welcome to the AI Financial Chatbot!
 
 This assistant helps you analyze your financial documents such as:
 
@@ -51,7 +51,7 @@ This assistant helps you analyze your financial documents such as:
 - 📄 Income tax summaries
 - 💼 Salary slips
 
-### 📂 How to Use:
+### How to Use:
 1. **Go to the "Chat" tab**
 2. **Upload** a `.pdf` or `.csv` file with your financial data
 3. **Ask questions** like:
@@ -60,7 +60,7 @@ This assistant helps you analyze your financial documents such as:
    - "Detect any duplicate transactions"
 4. Use the **Concise / Detailed** toggle to control how much explanation you want.
 
-### 🌐 Need real-time info?
+###  Need real-time info?
 Just type:
 > current gold price  
 > latest income tax rules  
@@ -75,7 +75,7 @@ Feel free to explore — the bot understands natural language and financial term
 
 # --------------------- Chat Page ---------------------
 def chat_page():
-    st.title("🤖 AI Financial Chatbot")
+    st.title(" AI Financial Chatbot")
 
     chat_model = get_chatgroq_model()
     uploaded_file = st.file_uploader("Upload your financial document (CSV or PDF)", type=["csv", "pdf"])
@@ -85,7 +85,7 @@ def chat_page():
         if uploaded_file.name.endswith(".csv"):
             df = pd.read_csv(uploaded_file)
             uploaded_text = df.to_string(index=False)
-            st.success("✅ CSV uploaded.")
+            st.success(" CSV uploaded.")
             st.dataframe(df)
         elif uploaded_file.name.endswith(".pdf"):
             reader = PdfReader(uploaded_file)
