@@ -47,9 +47,9 @@ def instructions_page():
 
 This assistant helps you analyze your financial documents such as:
 
-- 💳 Credit card statements
-- 📄 Income tax summaries
-- 💼 Salary slips
+-  Credit card statements
+-  Income tax summaries
+-  Salary slips
 
 ### How to Use:
 1. **Go to the "Chat" tab**
@@ -66,7 +66,7 @@ Just type:
 > latest income tax rules  
 > search: best credit card offers
 
-This triggers a **live web search** powered by SerpApi 🌐
+This triggers a **live web search** powered by SerpApi 
 
 ---
 
@@ -90,15 +90,15 @@ def chat_page():
         elif uploaded_file.name.endswith(".pdf"):
             reader = PdfReader(uploaded_file)
             if reader.is_encrypted:
-                password = st.text_input("🔒 This PDF is encrypted. Enter password to proceed:", type="password")
+                password = st.text_input(" This PDF is encrypted. Enter password to proceed:", type="password")
                 if password:
                     try:
                         result = reader.decrypt(password)
                         if result == 0:
-                            st.error("❌ Incorrect password. Please try again.")
+                            st.error(" Incorrect password. Please try again.")
                             return
                     except Exception as e:
-                        st.error(f"❌ Decryption failed: {e}")
+                        st.error(f" Decryption failed: {e}")
                         return
                 else:
                     st.warning("Please enter the password to read the PDF.")
@@ -116,21 +116,21 @@ def chat_page():
                     try:
                         text = reader.pages[i].extract_text()
                     except Exception as e:
-                        st.caption(f"⚠️ Page {i + 1} could not be read — it may not exist or is corrupted.")
+                        st.caption(f" Page {i + 1} could not be read — it may not exist or is corrupted.")
                         continue  # Skip to next page
                     if text:
                         extracted_pages.append(text)
                     else:
-                        st.caption(f"ℹ️ Page {i + 1} had no extractable text.")
+                        st.caption(f" Page {i + 1} had no extractable text.")
 
                 if not extracted_pages:
                     st.caption("No readable text found in the PDF.")
                     return
 
                 uploaded_text = "\n".join(extracted_pages)
-                st.success("✅ PDF uploaded and text extracted successfully.")
+                st.success("PDF uploaded and text extracted successfully.")
             except Exception as e:
-                st.error(f"❌ Failed to process PDF: {e}")
+                st.error(f" Failed to process PDF: {e}")
                 return
 
     # Initialize chat history
@@ -156,7 +156,7 @@ def chat_page():
                 response = get_chat_response(chat_model, st.session_state.messages, combined_prompt)
 
                 if not response or "I don't know" in response.lower():
-                    st.warning("🤖 Local model unsure. Searching the web...")
+                    st.warning(" Local model unsure. Searching the web...")
                     response = perform_web_search(prompt)
 
                 st.markdown(response)
@@ -166,7 +166,7 @@ def chat_page():
 def main():
     st.set_page_config(
         page_title="LangChain Multi-Provider ChatBot",
-        page_icon="🤖",
+        page_icon="",
         layout="wide",
         initial_sidebar_state="expanded"
     )
@@ -178,7 +178,7 @@ def main():
         st.session_state.mode = st.radio("Select Response Mode:", ["Concise", "Detailed"], index=0)
         if page == "Chat":
             st.divider()
-            if st.button("🗑️ Clear Chat History", use_container_width=True):
+            if st.button(" Clear Chat History", use_container_width=True):
                 st.session_state.messages = []
                 st.rerun()
 
