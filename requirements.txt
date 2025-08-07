@@ -1,0 +1,11 @@
+langchain
+langchain-core
+langchain-community
+langchain-groq
+PyPDF2              
+python-dotenv
+streamlit
+requests
+pandas               
+google-search-results
+pycryptodome
