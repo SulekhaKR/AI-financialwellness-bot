@@ -9,6 +9,6 @@ def get_chatgroq_model():
         api_key = os.getenv("GROQ_API_KEY")
         if not api_key:
             raise ValueError("GROQ_API_KEY not set")
-        return ChatGroq(api_key=api_key, model="llama3-8b-8192")
+        return ChatGroq(api_key=api_key, model="llama-3.3-70b-versatile")
     except Exception as e:
         raise RuntimeError(f"Failed to initialize Groq model: {str(e)}")
